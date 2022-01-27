@@ -1,0 +1,5 @@
+
+# https://github.com/minetest/minetest/blob/master/builtin/settingtypes.txt#L1
+
+# Can a feather falling feather be crafted (Now say that 5 times fast)
+feather_fall.craftable (Craftable Feather) bool false
