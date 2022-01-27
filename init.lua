@@ -1,7 +1,7 @@
 
 local ff = {}
 
-ff.VERSION = "1.0"
+ff.VERSION = "1.0.1"
 
 -- Attempt to detect what gamemode/game these folks are running on
 function ff.game_mode()
