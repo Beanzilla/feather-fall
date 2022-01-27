@@ -26,7 +26,7 @@ function ff.set_speed(user)
     --minetest.chat_send_player(user:get_player_name(), "Y: "..tostring(current_y))
     current_y = math.abs(current_y) -- Flip it so we can use it sanely
     if current_y > 3 then -- Only activate if greater than -2
-        user:add_velocity({x=0, y=current_y*0.06, z=0}) -- Reduce speed by X percent (it appears don't go past 0.50)
+        user:add_velocity({x=0, y=current_y*0.10, z=0}) -- Reduce speed by X percent (it appears don't go past 0.50)
     end
 end
 
@@ -80,3 +80,7 @@ if craftable == true then
         }
     })
 end
+
+minetest.log("action", "[feather_fall] Version: "..ff.VERSION)
+minetest.log("action", "[feather_fall] Gamemode is "..ff.game_mode())
+minetest.log("action", "[feather_fall] Ready")
