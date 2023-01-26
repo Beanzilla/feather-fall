@@ -30,15 +30,44 @@ function ff.set_speed(user)
     end
 end
 
+-- this function is part of the hotbar code, at line 53.
+function ff.find_stack(inv, listname, find_stack)
+	local max_size = inv:get_size(listname)
+	local i = 0
+	local RETURN_ME = ""
+	while i < max_size do
+		local stack = inv:get_stack(listname, i)
+		i = i+1
+		if stack:get_name() == find_stack then
+			RETURN_ME = i-1
+			i = max_size
+		end
+	end
+	return RETURN_ME
+end
+
 minetest.register_globalstep(function (dtime)
     for _, player in ipairs(minetest.get_connected_players()) do
-        local hand = player:get_wielded_item()
-        if hand ~= nil then -- Only run if we obtained the player's hand
-            -- Check if the player has this mod's feather in their hand
-            if hand:get_name() == "feather_fall:feather" then
-                ff.set_speed(player)
-            end
-        end
+		local inv = player:get_inventory()
+		minetest.chat_send_all("Y: "..tostring(ff.find_stack(inv, "main", "feather_fall:feather")))
+		--  HOTBAR CODE:
+		if ff.find_stack(inv, "main", "feather_fall:feather") <= 8 then
+			local location = inv:get_location()
+			ff.set_speed(player)
+		end
+		--  INVENTORY CODE:
+		--if inv:contains_item("main", "feather_fall:feather") then -- contains_item returns bool
+		--	local location = inv:get_location()
+		--	ff.set_speed(player)
+		--end
+		--  HAND CODE: (original code)
+		--local hand = player:get_wielded_item()
+		--if hand ~= nil then -- Only run if we obtained the player's hand
+		--    -- Check if the player has this mod's feather in their hand
+		--    if hand:get_name() == "feather_fall:feather" then
+		--        ff.set_speed(player)
+		--    end
+		--end
     end
 end)
 
