@@ -34,7 +34,7 @@ end
 function ff.find_stack(inv, listname, find_stack)
 	local max_size = inv:get_size(listname)
 	local i = 0
-	local RETURN_ME = ""
+	local RETURN_ME = -1
 	while i < max_size do
 		local stack = inv:get_stack(listname, i)
 		i = i+1
