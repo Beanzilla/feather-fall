@@ -51,7 +51,8 @@ minetest.register_globalstep(function (dtime)
 	local inv = player:get_inventory()
 	-- minetest.chat_send_all("Y: "..tostring(ff.find_stack(inv, "main", "feather_fall:feather")))
 	--  HOTBAR CODE:
-	if ff.find_stack(inv, "main", "feather_fall:feather") <= 8 then
+	local seek_stack = ff.find_stack(inv, "main", "feather_fall:feather")
+	if (seek_stack <= 8 and seek_stack ~= 0) then
 		local location = inv:get_location()
 		ff.set_speed(player)
 	end
