@@ -3,3 +3,15 @@
 
 # Can a feather falling feather be crafted (Now say that 5 times fast)
 feather_fall.craftable (Craftable Feather) bool false
+
+# A switch to disable gravity calls. Gravity calls make slowfall nice and smooth.
+feather_fall.use_gravity_calls (Use gravity calls) bool true
+
+# Falling speed when falling feather is "held". With gravity calls, 7 is recommended. Without gravity calls, 2 is recommended.
+feather_fall.falling_speed (Falling speed) int 7
+
+# The place where the falling feather must be to be "held". It is very likly that choosing either "inventory", or "hand", will make it impossible to place blocks while while slow falling.
+feather_fall.holding_requirement (Holding requirement) enum hotbar inventory,hotbar,hand
+
+# How many hotbar slots you have. Default is 8.
+feather_fall.hotbar_slots (Hotbar slot count) int 8
