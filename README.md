@@ -13,12 +13,13 @@ Having this feather in your hotbar makes you light as it
 Just add `feather_fall.craftable = true` to your `minetest.conf` (and restart if needed).
 
 > First run will create this setting to false, so you could just run it first then edit your `minetest.conf`.
-> Alternatively, you can enable crafting in the mod settings.
+
+For newer versions of minetest, you can enable crafting in the mod settings.
 
 ## Mod settings
 
-# A switch to toggle craftability.
-# A switch to disable gravity calls.
-# The falling speed when the falling feather is "held".
-# The place within the players inventory where the falling feather must be for it to be "held".
-# How many hotbar slots you have.
+- A switch to toggle craftability.
+- A switch to disable gravity calls.
+- The falling speed when the falling feather is "held".
+- The place within the players inventory where the falling feather must be for it to be "held".
+- How many hotbar slots you have.
