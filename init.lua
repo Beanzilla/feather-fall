@@ -76,7 +76,7 @@ minetest.register_globalstep(function (dtime)
 				end
 			end
 		end 
-		if (gravity_reset_timer == 0 or (current_gravity = 0 and math.abs(current_y) < 0.8))) then
+		if (gravity_reset_timer == 0 or (current_gravity == 0 and math.abs(current_y) < 0.8)) then
 			player:set_physics_override({gravity=1})
 			current_gravity = 1
 		end
