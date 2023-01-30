@@ -1,9 +1,10 @@
 
 local ff = {}
 local current_y = 0
+local current_gravity = 1
 local gravity_reset_timer = -1
 local use_gravity_calls = minetest.settings:get_bool("feather_fall.use_gravity_calls", true) -- a switch to disable change gravity calls
-local falling_speed = math.abs(tonumber(minetest.settings:get("feather_fall.falling_speed")) or 6)*-1
+local falling_speed = math.max(math.abs(tonumber(minetest.settings:get("feather_fall.falling_speed")) or 6)*-1,2)
 local holding_requirement = minetest.settings:get("feather_fall.holding_requirement") or "hotbar"
 local hotbar_slots = tonumber(minetest.settings:get("feather_fall.hotbar_slots")) or 8
 
@@ -33,6 +34,7 @@ function ff.set_speed(user)
     if current_y < falling_speed then
         user:add_velocity({x=0, y=current_y*-0.2, z=0}) -- Reduce speed by X percent (it appears don't go past 0.50)
 		if use_gravity_calls == true then user:set_physics_override({gravity=0}) end
+		current_gravity = 0
     end
 end
 
@@ -73,9 +75,10 @@ minetest.register_globalstep(function (dtime)
 					ff.set_speed(player)
 				end
 			end
-		end
-		if gravity_reset_timer == 0 then
+		end 
+		if (gravity_reset_timer == 0 or (current_gravity = 0 and math.abs(current_y) < 0.8))) then
 			player:set_physics_override({gravity=1})
+			current_gravity = 1
 		end
     end
 end)
