@@ -4,7 +4,7 @@ local current_y = 0
 local current_gravity = 1
 local gravity_reset_timer = -1
 local use_gravity_calls = minetest.settings:get_bool("feather_fall.use_gravity_calls", true) -- a switch to disable change gravity calls
-local falling_speed = math.max(math.abs(tonumber(minetest.settings:get("feather_fall.falling_speed")) or 6)*-1,2)
+local falling_speed = math.max(math.abs(tonumber(minetest.settings:get("feather_fall.falling_speed")) or 6)*-1,1)
 local holding_requirement = minetest.settings:get("feather_fall.holding_requirement") or "hotbar"
 local hotbar_slots = tonumber(minetest.settings:get("feather_fall.hotbar_slots")) or 8
 
